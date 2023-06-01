@@ -45,12 +45,12 @@ class _Splash_screenState extends State<Splash_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimatedSplashScreen(
-        backgroundColor: Colors.white,
-        animationDuration: const Duration(seconds: 4),
-        splash: "assets/images/Krishna.jpg",
-        splashIconSize: 190,
-        nextScreen: const Home_page(),
-      ),
+          backgroundColor: Colors.white,
+          animationDuration: const Duration(seconds: 10),
+          splash: "assets/images/Krishna.jpg",
+          splashIconSize: 190,
+          nextScreen: const Home_page(),
+        ),
     );
   }
 }

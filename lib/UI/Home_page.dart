@@ -17,8 +17,12 @@ class _Home_pageState extends State<Home_page> {
     return Consumer<HomeProvider>(
         builder: (context,provider,child)=>Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title:  const Text("श्रीमद भागवत गीता",
+        backgroundColor: Colors.red.shade400,
+        title:  Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: const Text("श्रीमद भागवत गीता",
+            style: TextStyle(fontSize: 18),
+          ),
         ),
         elevation: 0,
         actions: [
@@ -28,48 +32,59 @@ class _Home_pageState extends State<Home_page> {
           )
         ],
       ),
-          body: Column(
-            children: [
-              Expanded(
-                  child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisSpacing: 8,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8,
-                      ),
-                      itemCount: provider.gitadata.length,
-                      itemBuilder: (context,index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushNamed('detail_page',arguments: index);
-                          },
-                          child: Card(
-                            elevation: 30,
-                            shadowColor: Colors.black,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(0)
-                              ),
-                              alignment: Alignment.center,
-                              child: Column(
-                                children: [
-                                  const SizedBox(height: 15),
-                                  Center(
-                                    child: Image(image: NetworkImage(provider.gitadata[index]['imageName'],
+          backgroundColor: Colors.red.shade50,
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Expanded(
+                    child: GridView.builder(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 30,
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 20,
+                          childAspectRatio: 1,
+                        ),
+                        itemCount: provider.gitadata.length,
+                        itemBuilder: (context,index) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pushNamed('detail_page',arguments: index);
+                            },
+                            child: Card(
+                              elevation: 5,
+                              shadowColor: Colors.white,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black26,
+                                  borderRadius: BorderRadius.circular(5)
+                                ),
+                                alignment: Alignment.center,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(height: 15),
+                                    Center(
+                                      child: CircleAvatar(
+                                        radius: 50,
+                                        foregroundImage: NetworkImage(provider.gitadata[index]['imageName'],),),
                                     ),
-                                      height: 100,
-                                      width: 100,
+                                    const SizedBox(height: 15),
+                                    Text(
+                                      "${provider.gitadata[index]['name']}",
+                                      style: const TextStyle(
+                                          fontSize: 14, color: Colors.red),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      }
-                  )
-              )
-              ],
+                          );
+                        }
+                    )
+                )
+                ],
+            ),
           ),
         ),
     );
