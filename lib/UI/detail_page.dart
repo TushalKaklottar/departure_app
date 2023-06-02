@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:departure_app/Provider/Home_provider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -63,7 +64,7 @@ class _detail_pageState extends State<detail_page> {
                       ),
                       ),
                   ),
-                )
+                ),
                 Center(
                   child: DotsIndicator(
                     dotsCount: provider.gitaimages[index].length,
@@ -75,6 +76,13 @@ class _detail_pageState extends State<detail_page> {
                     ),
                   ),
                 ),
+                Text("${provider.gitadata[index]},style: bigtext"),
+                Text("${provider.gitadata[index]['name_meaning']}",style: smalltext,),
+                const SizedBox(height: 20),
+                Text("${provider.gitadata[index]['name_translation']}",style: bigtext,),
+                Text("${provider.gitadata[index]['name_transliterated']}",style: smalltext,),
+                const SizedBox(height: 30),
+                Text("${provider.gitadata[index]['chapter_summary_hindi']}",style: smalltext,),
               ],
             ),
           )
