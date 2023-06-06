@@ -33,57 +33,60 @@ class _detail_pageState extends State<detail_page> {
             elevation: 0,
             leadingWidth: 30,
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Center(
-                      child: CarouselSlider(
-                        items: provider.gitaimages[index].map(
-                                (e) => Container(
-                                  height: 250,
-                                  width: double.infinity,
-                                  margin: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: NetworkImage(e),
-                                      fit: BoxFit.fill,
+          body: Padding(
+            padding: const EdgeInsets.all(10),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Center(
+                        child: CarouselSlider(
+                          items: provider.gitaimages[index].map(
+                                  (e) => Container(
+                                    height: 250,
+                                    width: double.infinity,
+                                    margin: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: NetworkImage(e),
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
-                                  ),
-                                )
-                        ).toList(),
-                        options: CarouselOptions(
-                          autoPlay: true,
-                          height: 250,
-                          aspectRatio: 1.0,
-                          enableInfiniteScroll: true,
-                          enlargeCenterPage: true,
-                          onPageChanged: (index, reason) =>
-                              provider.changeCurrentPageIndex(index),
-                      ),
-                      ),
-                  ),
-                ),
-                Center(
-                  child: DotsIndicator(
-                    dotsCount: provider.gitaimages[index].length,
-                    position: provider.currentIndex,
-                    decorator: DotsDecorator(
-                      // activeColor: Provider.of<ThemeProvider>(context).isDark
-                      //     ? Colors.green
-                      //     : Colors.blue,
+                                  )
+                          ).toList(),
+                          options: CarouselOptions(
+                            autoPlay: true,
+                            height: 250,
+                            aspectRatio: 1.0,
+                            enableInfiniteScroll: true,
+                            enlargeCenterPage: true,
+                            onPageChanged: (index, reason) =>
+                                provider.changeCurrentPageIndex(index),
+                        ),
+                        ),
                     ),
                   ),
-                ),
-                Text("${provider.gitadata[index]},style: bigtext"),
-                Text("${provider.gitadata[index]['name_meaning']}",style: smalltext,),
-                const SizedBox(height: 20),
-                Text("${provider.gitadata[index]['name_translation']}",style: bigtext,),
-                Text("${provider.gitadata[index]['name_transliterated']}",style: smalltext,),
-                const SizedBox(height: 30),
-                Text("${provider.gitadata[index]['chapter_summary_hindi']}",style: smalltext,),
-              ],
+                  Center(
+                    child: DotsIndicator(
+                      dotsCount: provider.gitaimages[index].length,
+                      position: provider.currentIndex,
+                      decorator: DotsDecorator(
+                        // activeColor: Provider.of<ThemeProvider>(context).isDark
+                        //     ? Colors.green
+                        //     : Colors.blue,
+                      ),
+                    ),
+                  ),
+                  Text("${provider.gitadata[index]},style: bigtext"),
+                  Text("${provider.gitadata[index]['name_meaning']}",style: smalltext,),
+                  const SizedBox(height: 20),
+                  Text("${provider.gitadata[index]['name_translation']}",style: bigtext,),
+                  Text("${provider.gitadata[index]['name_transliterated']}",style: smalltext,),
+                  const SizedBox(height: 30),
+                  Text("${provider.gitadata[index]['chapter_summary_hindi']}",style: smalltext,),
+                ],
+              ),
             ),
           )
           ),

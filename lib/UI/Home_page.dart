@@ -25,12 +25,6 @@ class _Home_pageState extends State<Home_page> {
           ),
         ),
         elevation: 0,
-        actions: [
-          Switch(
-              value: provider.isDark,
-              onChanged: (value) => provider.isDark = value,
-          )
-        ],
       ),
           backgroundColor: Colors.red.shade50,
           body: Padding(
